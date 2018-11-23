@@ -1,0 +1,176 @@
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in">Bookings</div>
+      <div class="intro-heading text-uppercase">Lorem ipsum dolor sit amet.</div>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="bookings#booking">Learn More</a>
+    </div>
+  </div>
+</header>
+
+<app-spinner *ngIf="isLoadingResults"></app-spinner>
+<section id="booking">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Booking</h2>
+        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="name">Your Name</label>
+          <div class="col-md-12">
+            <input
+             id="fullname"
+             class="form-control input-md"
+             name="fullname"
+             type="text"
+             placeholder="Your name"
+             [(ngModel)]="booking.fullname"
+             required="">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="phone">Phone Number</label>
+          <div class="col-md-12">
+            <input
+             id="phone_number"
+             class="form-control input-md"
+             name="phone_number"
+             type="text"
+             placeholder="Phone Number"
+             [(ngModel)]="booking.phone_number"
+             required="">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="emailaddress">Email Address</label>
+          <div class="col-md-12">
+            <input
+             id="email_address"
+             class="form-control input-md"
+             name="email_address"
+             type="text"
+             placeholder="Email Address"
+             [(ngModel)]="booking.email_address"
+             required="">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="event_type">Event Type</label>
+          <div class="col-md-12">
+            <input
+            id="event_type"
+            class="form-control input-md"
+            name="event_type"
+            type="text"
+            placeholder="Event Type"
+            [(ngModel)]="booking.event_type"
+            required="">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="event_date">Event Date</label>
+          <div class="input-group col-md-12">
+              <input type="text"
+               placeholder="Event Date"
+               class="form-control"
+               id="event_date"
+               bsDatepicker
+               [(ngModel)]="booking.event_date"
+               (ngModelChange)="setEventDate()"
+               [bsConfig]="{ dateInputFormat: 'MMMM DD, YYYY' }">
+              <div class="input-group-append" data-target="#event_date" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="timeselect">Event Time</label>
+          <div class="col-md-12" id="start_time" data-target-input="nearest">
+            <timepicker
+             name="start_time"
+             [(ngModel)]="booking.start_time"
+             (ngModelChange)="setStartTime()"></timepicker>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="duration">Duration</label>
+          <div class="col-md-12">
+            <input
+             id="duration"
+             class="form-control input-md"
+             name="duration"
+             type="text"
+             placeholder="Duration"
+             [(ngModel)]="booking.duration">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="hotel">Details</label>
+          <div class="col-md-12">
+            <textarea
+             id="details"
+             class="form-control input-md"
+             name="details"
+             placeholder="Details"
+             [(ngModel)]="booking.details"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <alert type="success" *ngIf="this.isAdded">
+              <strong>Success!</strong> Booking added to our list.
+            </alert>
+            <alert type="danger" *ngIf="this.hasError">
+              <strong>Failed! </strong> {{ this.errorMessage }}
+            </alert>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+              <button (click)="submitBooking()" class="btn btn-dark">Book</button>
+              <!-- <ngx-paypal *ngIf="isBooked" [config]="payPalConfig"></ngx-paypal> -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="myModal" class="modal" *ngIf="isSuccess">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="fas fa-check"></i>
+				</div>
+				<h4 class="modal-title">Awesome!</h4>
+			</div>
+			<div class="modal-body">
+				<p class="text-center">Your Payment with us has been confirmed. Check your email for details.</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success btn-block" (click)="closeModal()" routerLink="/bookings">OK</button>
+			</div>
+		</div>
+	</div>
+</div>

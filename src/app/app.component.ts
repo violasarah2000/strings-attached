@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'strings-attached';
+  title = 'Strings Attached';
+  public constructor( private titleService: Title ) { }
+
+  public setTitle( newTitle: string) {
+    let _s = this
+    _s.titleService.setTitle(newTitle + ' | ' + this.title );
+  }
 }
