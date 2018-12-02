@@ -1,13 +1,14 @@
 'use strict';
 
 var Booking = require('../models/BookingModel.js');
+var Transaction = require('../models/TransactionModel.js');
 var paypal = require('paypal-rest-sdk');
 require('../config/paypal.js');
 
 exports.approval_url = '';
+var booking_id = 0;
 var stringsattachedUrl = '//localhost:4200';
 var httpUrl = "http://localhost:3000"
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
   stringsattachedUrl = '//stringsattachedtx.com';
   httpUrl = "//localhost:3000"
@@ -93,7 +94,7 @@ exports.createBooking = function(req, res, next) {
             "currency": "USD",
             "total": "25.00"
         },
-        "description": "This is the payment description."
+        "description": "Payment for strings attached service."
     }]
   };
 
@@ -106,10 +107,24 @@ exports.createBooking = function(req, res, next) {
         if (err) {
           res.send({status: 400, message: 'Bookings not added'});
           return false
+        } else {
+          var transaction_data = {
+            id: payment.id,
+            amount: payment.transactions[0].amount.total,
+            booking_id: booking,
+            currency: payment.transactions[0].amount.currency,
+            transaction_date: payment.create_time,
+            status: 'pending'
+          };
+          Transaction.createTransaction(transaction_data, function(err, transaction) {
+            if (err) {
+              res.send({status: 400, message: 'Transaction not added'});
+              return false
+            }
+          });
+          return res.send({status: 200, message: 'Bookings Successfully Added', data: payment});
         }
-        // res.json({status: 200, message: 'Bookings Successfully Added', data: { id: booking, url: exports.createPayment(req, res, next)}});
       });
-      return res.send({status: 200, message: 'Bookings Successfully Added', data: payment});
     }
   });
 }
@@ -133,6 +148,26 @@ exports.successPayment = function (req, res, next) {
       throw error;
     }
     if (res) {
+      var transaction_data = {
+        id: payment.id,
+        amount: payment.transactions[0].amount.total,
+        currency: payment.transactions[0].amount.currency,
+        transaction_date: payment.create_time,
+        status: payment.state,
+        recepient_name: payment.payer.payer_info.shipping_address.recipient_name,
+        address: payment.payer.payer_info.shipping_address.line1,
+        city: payment.payer.payer_info.shipping_address.city,
+        state: payment.payer.payer_info.shipping_address.state,
+        postal_code: payment.payer.payer_info.shipping_address.postal_code,
+        country_code: payment.payer.payer_info.shipping_address.country_code
+      }
+      Transaction.updateTransaction(payment.id, transaction_data, function(err, transaction) {
+        if (err) {
+          res.send({status: 400, message: 'Transaction not updated'});
+          return false
+        }
+        // res.json({status: 200, message: 'Bookings Successfully Added', data: { id: booking, url: exports.createPayment(req, res, next)}});
+      });
       res.redirect(301, stringsattachedUrl + '/bookings?status='+payment.state)
       res.end()
     }

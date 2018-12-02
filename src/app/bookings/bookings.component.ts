@@ -60,14 +60,15 @@ export class BookingsComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.addBooking(this.booking)
       .subscribe(res => {
-        setTimeout(() => {
-          this.isLoadingResults = false;
-        }, 1000)
         if (res.status === 200) {
+          setTimeout(() => {
+            this.isLoadingResults = false;
+          }, 1000)
           window.location.href = res.data.links[1].href;
         } else {
           setTimeout(() => {
             this.hasError = true;
+            this.isLoadingResults = false;
             this.errorMessage = res.message
             setTimeout(() => {
               this.hasError = false;

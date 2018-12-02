@@ -5,6 +5,7 @@ const express = require('express'),
 
 
 const mysql = require('mysql');
+const helmet = require('helmet');
 // connection configurations
 const mc = mysql.createConnection({
     host: 'localhost',
@@ -22,6 +23,7 @@ console.log('API server started on: ' + port);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(helmet());
 
 var routes = require('./app/routes/approutes'); //importing route
 routes(app); //register the route

@@ -23,7 +23,6 @@ Booking.createBooking = function createBooking (newBooking, result) {
                     result(err, null);
                 }
                 else{
-                    console.log(res.insertId);
                     result(null, res.insertId);
                 }
             });
@@ -50,7 +49,6 @@ Booking.getAllBookings = function getAllBookings (result) {
                 }
                 else{
                   console.log('tasks : ', res);
-
                  result(null, res);
                 }
             });
