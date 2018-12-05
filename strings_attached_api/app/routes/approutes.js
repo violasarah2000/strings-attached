@@ -1,14 +1,17 @@
 module.exports = function(app) {
   var Booking = require('../controllers/BookingController');
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+  var User = require('../controllers/UserController');
+  //Booking
   app.route('/bookings')
     .get(Booking.getAllBookings)
     .post(Booking.createBooking);
 
+  // Payment
   app.get('/success', Booking.successPayment);
   app.get('/cancel', Booking.cancelPayment);
+
+  //Auth
+  app.post('/login', User.login);
+  app.get('/logout', User.logout);
+  app.post('/checkSession', User.checkSession);
 };
