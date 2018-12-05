@@ -1,7 +1,7 @@
 'user strict';
 var sql = require('./db.js');
 
-//Task object constructor
+//Transaction object constructor
 var Transaction = function(transaction){
     this.id = transaction.id;
     this.booking_id = transaction.booking_id;

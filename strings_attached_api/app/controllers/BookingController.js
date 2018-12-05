@@ -19,7 +19,7 @@ exports.getAllBookings = function(req, res, next) {
       res.send(err);
       return false
     }
-    res.send(bookings);
+    res.send({"status": 200, "data": bookings});
   });
 };
 
@@ -29,7 +29,7 @@ exports.getBookingById = function(req, res, next) {
       res.send(err);
       return false
     }
-    res.json(booking);
+    res.json({"status": 200, "data": booking});
   });
 };
 
