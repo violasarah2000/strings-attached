@@ -8,17 +8,6 @@ const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-// connection configurations
-const mc = mysql.createConnection({
-  host     : 'sql177.main-hosting.eu',
-  user     : 'u575780080_stra',
-  password : 'strapass',
-  database : 'u575780080_stra'
-});
-
-// connect to database
-mc.connect();
-
 app.listen(port);
 
 console.log('API server started on: ' + port);
