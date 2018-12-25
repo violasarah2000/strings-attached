@@ -4,17 +4,17 @@ var mysql = require('mysql');
 
 //local mysql db connection
 var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'strings_attached'
+    host     : 'sql177.main-hosting.eu',
+    user     : 'u575780080_stra',
+    password : 'strapass',
+    database : 'u575780080_stra'
 });
 
 connection.connect(function(err) {
   if(!err) {
-    console.log("Database is connected ... nn");
+    console.log("Database is connected ...");
   } else {
-    console.log("Error connecting database ... nn");
+    console.log("Error connecting database ...");
   }
 });
 
