@@ -8,7 +8,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-const apiUrl = "http://stringsattachedtx.com:3000/bookings";
+const apiUrl = "http://127.0.0.1:3000/bookings";
 
 @Injectable({
   providedIn: 'root'
