@@ -8,7 +8,7 @@ const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-app.listen(port);
+app.listen(port, '0.0.0.0');
 
 console.log('API server started on: ' + port);
 
