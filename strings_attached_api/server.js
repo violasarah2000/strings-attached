@@ -10,10 +10,10 @@ const session = require('express-session');
 
 // connection configurations
 const mc = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'strings_attached'
+  host     : 'sql177.main-hosting.eu',
+  user     : 'u575780080_stra',
+  password : 'strapass',
+  database : 'u575780080_stra'
 });
 
 // connect to database
