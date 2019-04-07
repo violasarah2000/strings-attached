@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/violasarah2000/strings-attached/depshield.svg)](https://depshield.github.io)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
