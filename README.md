@@ -3,6 +3,7 @@ I'm looking forward to implementing TensorFlow and other AI technology!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
+DepShield Badge:
 [![DepShield Badge](https://depshield.sonatype.org/badges/violasarah2000/strings-attached/depshield.svg)](https://depshield.github.io)
 
 ## Development server
