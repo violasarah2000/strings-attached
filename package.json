@@ -30,7 +30,7 @@
     "cookie-parser": "1.4.3",
     "core-js": "^2.5.4",
     "express-session": "1.15.6",
-    "helmet": "3.15.0",
+    "helmet": "3.21.1",
     "moment": "^2.22.2",
     "ngx-bootstrap": "^3.1.1",
     "ngx-paypal": "^4.0.0",
