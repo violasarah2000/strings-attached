@@ -32,7 +32,7 @@
     "express-session": "1.15.6",
     "helmet": "3.21.1",
     "moment": "2.22.2",
-    "ngx-bootstrap": "3.1.1",
+    "ngx-bootstrap": "3.3.0",
     "ngx-paypal": "4.0.0",
     "rxjs": "6.5.3",
     "zone.js": "0.10.2"
