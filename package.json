@@ -33,7 +33,7 @@
     "helmet": "3.21.1",
     "moment": "2.22.2",
     "ngx-bootstrap": "5.2.0",
-    "ngx-paypal": "4.0.0",
+    "ngx-paypal": "4.0.2",
     "rxjs": "6.5.3",
     "zone.js": "0.10.2"
   },
