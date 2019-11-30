@@ -5,6 +5,9 @@ nvm:
   - 6.13.1
 cache: npm
 
+before_install:
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
 install: 
   - npm ci
 
@@ -17,9 +20,6 @@ env:
    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
    #   via the "travis encrypt" command using the project repo's public key
    - secure: "uW86SrxbLQ+zcUivnvREJkMcn4cEYERR4GUEwXTt9joQoUmL+05bArjsHm5ZlPaiG3yDP+B4X5Q/Z7QymG6nbYfgs+FgSS+DCrNtbCfGLsGxZd2tkABDtny9eub9a79i9pEeFateIvyn9WnBvblwcHi712QE5xTR0Dx7ZaVTzr+pgZzLJ7eJLNyDLEINK3ExZG2I56tzLoXgdliBBjlU8V8SvS+vTu+kL6LlBQligzpLn6cUVzNzX5YWPy+4y+TRvlvHdXLpvRc2/RkaRPFTVT2WsYS05y7ZVXuQf16w9mfscaslUSWP5jvDOlF5+KQIYQx1NN8X3ic5QFoa1a5s278ELsLabMz+LjxNFW/6Alk6AsEfOPy6bVa4a0mds5Vi8CLwS/nBXxtNDB61zmYCKBNxuhosuWhJwb8u/bEfzD4/VehaJgeyRPq0+ejNhpj9rzmC0I4sO7FuhXZiFA2vPPmfUXvm6FgZzcAO6x/HSJI/9mST/zLv7rnY6Dg9NV3GT+cviTTLGC0lvdECddlCZC8+Y+xp9IZj0NzvXafwCaC9ko1lyeRx/YUAR7svND3HK24aR5+To5dLoW67J/OVke1xug2L1722XIZtUQzjHNXzxz7zetMdJhdOSGiLQHlMdxM3vUNPnW4XuYerzmnxJ+VqDr/gwKUlV9l91xCRO9k="
-
-before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
 addons:
   coverity_scan:
