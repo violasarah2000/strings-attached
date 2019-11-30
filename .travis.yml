@@ -1,14 +1,13 @@
 language: node_js
 node_js:
   - 13.2.0
-npm:
+nvm:
   - 6.13.1
 cache: npm
 
 install: 
   - npm ci
-  - yarn install
-  
-script:
-  - yarn test
-  - yarn run build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
