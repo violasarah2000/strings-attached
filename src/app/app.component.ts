@@ -7,7 +7,7 @@ import { Title }     from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Strings Attached';
+  title = 'Strings Attached Texas LLC';
   public constructor( private titleService: Title ) { }
 
   public setTitle( newTitle: string) {
