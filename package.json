@@ -20,7 +20,7 @@
     "@angular/http": "7.2.15",
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
-    "@angular/pwa": "0.803.21",
+    "@angular/pwa": "0.803.29",
     "@angular/router": "8.2.14",
     "@angular/service-worker": "8.2.14",
     "@types/moment": "2.13.0",
